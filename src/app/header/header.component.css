@@ -1,0 +1,76 @@
+.header{
+    width: 100%;
+    height: 100px;
+    background-color: #000038;
+}
+.logo{
+    width:55px;
+    margin:15px 0 15px 50px;
+}
+.custom-shape-divider-top-1708749799 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    height: 430px;
+    background-image: linear-gradient(to bottom right, #000038, #a4c639);
+}
+.custom-shape-divider-top-1708749799 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 73px;
+}
+.custom-shape-divider-top-1708749799 .shape-fill {
+    fill: #000038;
+}
+.one{
+    height:30px;
+    width:95%;
+    background-color: white;
+    opacity: 0.9;
+    margin: 0px 10px 0px 30px;
+    padding: 13px 0 0 5px;
+    border-radius: 5px;
+}
+.two{
+    height: 300px;
+    width: 95%;
+    margin: 10px 10px 0px 30px;
+    padding: 12px 0 0 5px;
+    border-radius: 5px;
+    background-color: white;
+    opacity: 0.9;
+}
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+.row,
+.row > .column {
+    padding: 8px;
+}
+.column {
+    float: left;
+    width: 25%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.content {
+    background-color: white;
+    padding: 10px;
+}
+@media screen and (max-width: 900px) {
+    .column {
+      width: 50%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+}

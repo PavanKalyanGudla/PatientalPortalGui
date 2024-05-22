@@ -1,0 +1,255 @@
+  .bg-c-blue {
+    background: linear-gradient(45deg, #4099ff, #73b4ff);
+  }
+
+  .bg-c-green {
+    background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+  }
+
+  .bg-c-yellow {
+    background: linear-gradient(45deg, #FFB64D, #ffcb80);
+  }
+
+  .bg-c-pink {
+    background: linear-gradient(45deg, #FF5370, #ff869a);
+  }
+
+  .card {
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    padding: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card .card-block {
+    padding: 25px;
+    cursor: pointer;
+  }
+
+  .f-left {
+    float: left;
+  }
+
+  .f-right {
+    float: right;
+  }
+
+  #buttonId:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  #buttonId:focus {
+    opacity: 0.5;
+  }
+
+  .flagContent {
+    background-color: red;
+    height: 100px;
+    width: 95%;
+    margin: auto;
+  }
+
+  .closeSignup {
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 90px;
+    width: 100%;
+    /* background-color: green; */
+    margin-left: 100px;
+    padding-left: 99%;
+  }
+
+  .closeSignup:hover {
+    cursor: pointer;
+  }
+
+  /*  */
+  .appointments-section {
+    width: 100%;
+    max-width: 98%;
+    margin: 15px auto;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .appointments-header {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  select{
+    width: 20%;
+    /* background: transparent; */
+    background-color: #ddd;
+    padding: 5px;
+    outline: none;
+    border: 0;
+    /* border-radius: 35px; */
+  }
+  .available{
+    color:#ccc;
+    font-size:20px;
+  }
+  .booked{
+    color:green;
+    font-size:20px;
+  }
+  button {
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .data-row:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  /*  */
+  .modalSignup {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 95px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modalSignup-content {
+    position: relative;
+    background-color: #fefefe;
+    margin:1% auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  .modalSignup-header {
+    padding: 2px 16px;
+    background-color: #000038;
+    color: white;
+  }
+  .modalSignup-body {
+    padding: 2px 16px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  .modalSignup-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  .closeSignup {
+    color: red;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    width:10px;
+    padding-left:300px;
+    margin-top:200px;
+  }
+  .closeSignup:hover,.closeSignup:focus {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .patientDiv{
+    margin:auto;
+    width: 95%;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+  }
+  .doctor-profile {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+    max-width: 95%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .doctor-photo img{
+    border-radius: 50%;
+    cursor: pointer;
+    width: 150px;height:150px;
+  }
+  .doctor-info h2, .doctor-info p {
+    margin: 0;
+    padding: 4px 0;
+  }
+  .patientDiv2{
+    width: 100%;
+    margin: auto;
+    padding: 0 auto;
+  }
+  .grid-container1 {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: space-between;
+    /* gap: 5%; */
+    width: 100%;
+  }
+  /*  */
+  .patientDiv2 {
+    width: 80%;
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 5px;
+}
+
+.info-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+}
+
+.value {
+    color: #333;
+}

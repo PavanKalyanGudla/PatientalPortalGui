@@ -1,0 +1,130 @@
+<div id="grad1">
+    <div style="width: 95%; display: table;margin: 0px 10px 0px 30px;">
+        <div class="grid-container">
+            <div class="grid-child">
+                <div class="patient-portal-info">
+                    <h2>Welcome to Our <span style="color:Red">Med <i class="fa fa-heartbeat" style="color:orange"></i></span> Portal</h2>
+                    <p>Our patient portal is designed to provide you with convenient access to your medical information and communication with our healthcare team.</p>
+                    <ul>
+                        <li>View your medical records</li>
+                        <li>Schedule appointments</li>
+                        <li>Send secure messages to your healthcare provider</li>
+                        <li>Receive lab results</li>
+                        <li>Request prescription refills</li>
+                    </ul>
+                    <p>To get started, please sign up or log in below:</p>
+                    <div class="portal-buttons">
+                        <button (click)="signUp()">Sign Up</button>
+                        <button (click)="login()">Log In</button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-child">
+                <div class="patient-portal-info">
+                    <h2>Explore Our Services</h2>
+                    <p>Discover the wide range of healthcare services we offer to meet your needs.</p>
+                    <ul>
+                        <li>Primary care</li>
+                        <li>Specialty care</li>
+                        <li>Diagnostic tests</li>
+                        <li>Preventive screenings</li>
+                        <li>Emergency care</li>
+                    </ul>
+                    <p>Learn more about each service and how we can assist you in maintaining your health and well-being.</p>
+                    <div class="explore-buttons">
+                        <button (click)="learnMore()">Learn More</button>
+                        <button>Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <h3 class="mb-0">Why Choose Medical Portal Healthcare?</h3>
+                  <p class="card-text mb-auto">Largest network of the worlds finest and brightest medical experts who provide compassionate care using outstanding expertise and advanced technology.</p>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img class="bd-placeholder-img" width="200" height="250" src="assets/4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <strong class="d-inline-block mb-2 text-success"></strong>
+                  <h3 class="mb-0">Stop The Stroke!</h3>
+                  <p class="mb-auto">When someone has stroke, we lose crucial braincells, the key to mobility, communication and memory.</p>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="200" height="250" src="assets/5.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <strong class="d-inline-block mb-2 text-danger"></strong>
+                  <h3 class="mb-0">Med Portal Heart Institute Expertise</h3>
+                  
+                  <p class="card-text mb-auto">The Heart Institutes are regarded as one of the best heart hospitals in US, performing a multitude of treatments and procedures in cardiology and cardiothoracic surgery. </p>
+                  
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img class="bd-placeholder-img" width="200" height="250" src="assets/6.jpg" alt="">
+                </div>
+              </div>
+          </div>
+        <div class="col">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <strong class="d-inline-block mb-2 text-warning"></strong>
+                  <h3 class="mb-0">Med Portal Never Sleeps</h3>
+                  
+                  <p class="mb-auto">Get the most advance emergency care anywhere in minutes just. For free ambulence service dial "1066"</p>
+                  
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="200" height="250" src="assets/7.png" alt="">
+    
+                </div>
+              </div>
+        </div>
+      </div>
+</div>
+
+<div class="modal" [style.display]="loginFlag">
+    <form class="modal-content animate">
+        <div style="padding: 30px 20px 10px 30px;">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" [(ngModel)]="userName" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password" required>
+            <button type="button" class="loginbtn" (click)="userLogin()">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="btn-danger cancelbtn" (click)="cancelLogin()">Cancel</button>
+            <span class="psw">Forgot <a href="#" >password?</a></span>
+        </div>
+    </form>
+</div>
+<div id="myModal" class="modalSignup"  [style.display]="signUpFlag">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="cancelSignUp()">&times;</span>
+        <h4>Patient Registration</h4>
+      </div>
+      <div class="modalSignup-body">
+        <app-registration></app-registration>
+      </div>
+    </div>
+</div>

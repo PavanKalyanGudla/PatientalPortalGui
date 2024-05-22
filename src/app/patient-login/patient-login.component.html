@@ -1,0 +1,258 @@
+<div>
+    <nav class="menu" tabindex="0">
+        <div class="container1" style="margin:30px;">
+            <div class="div1">
+                <div class="hidden-element upload-div" id="uploadDiv" style="margin:70px 0 0 0;">
+                    <i class="fa fa-camera" style="font-size:50px;"></i>
+                    <input type="file" id="fileInput" accept=".jpg, .jpeg, .png">
+                </div>
+            </div>
+            <div class="div2 nav-user-icon">
+                <img src="../../assets/images/patientUser.jpeg" alt="" *ngIf="!profileFlag">
+                <img [src]="profilePicSrc" alt="" *ngIf="profileFlag">
+            </div>
+        </div>
+        <h4 style="text-align: center;">{{patientObject.firstName}} {{patientObject.lastName}}</h4>
+        <ul>
+            <li><button class="btn" [class]="activeClass" (click)="openMenuTab('one')"><i class="fa fa-home"></i> Home</button></li>
+            <li><button class="btn" (click)="openMenuTab('four')"><i class="fa fa-user"></i> View/Edit Profile</button></li>
+            <li><button class="btn" (click)="openMenuTab('two')"><i class="fa fa-calendar"></i> Appointments</button></li>
+            <li><button class="btn" (click)="openMenuTab('three')"><i class="fa fa-user-md"></i> View Doctors</button></li>
+            <li><button class="btn" (click)="openMenuTab('five')"><i class="fas fa-hand-holding-medical"></i> Order Medicines</button></li>
+            <li><button class="btn" (click)="openMenuTab('six')"><i class="fa fa-folder"></i> Payments </button></li>
+            <li><button class="btn" (click)="openMenuTab('seven')"><i class="fa fa-shopping-cart" ></i>Orders</button></li>
+            <li><button class="btn" (click)="logout()" style="color: red;">LogOut</button></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div>
+            <nav class="navbar-dark fixed-top">
+                <div class="header">
+                    <div class="grid-container">
+                        <div style="width: 50%; display: table;">
+                            <div style="display: table-row">
+                                <div style="width: 5%; display: table-cell;">
+                                    <img class="logo" src="../../assets/images/logo.png">
+                                </div>
+                                <div style="display: table-cell;color:#a4c639;width:8vh;">
+                                  <span style="color:Red">Med <i class="fa fa-heartbeat" style="color:orange"></i></span> Portal
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 50%; display: table;margin: auto;">
+                            <div style="display: table-row;margin:auto;">
+                                <div class="cart" (click)="openMenuTab('six')">
+                                    <i class="bi bi-cart2"></i>
+                                    <div id="cartAmount" class="cartAmount">{{cartCount}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </nav>
+            s
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'one')?'block':'none'" style="width: 170vh;">
+            <div style="margin-top:10px;">
+                <div style="background-color: #000038;color:white;padding: 10px;">
+                    Hi <span style="color: red;">{{patientObject.firstName}} {{patientObject.lastName}}</span> Welcome To Patiental Portal
+                </div>
+                <div class="centerContainer">
+                    <img src="../../assets/ezgif.com-speed.gif" alt="" style="margin-right:0px;">
+                </div>
+            </div>
+            <div>
+                <div class="centerContainer" style="height: 340px;margin-bottom: 10px;">
+                    <div >
+                        <div style="border:3px solid red;border-radius:10px;margin:0px 10px;">
+                            <div style="border-top-left-radius:10px;border-top-right-radius:10px;background-color: #000038;text-align: center;padding:8px;color:white;">
+                                Patient Health Education Resource
+                            </div>
+                            <div style="max-height: 280px;overflow-y: auto;">
+                                <table>
+                                    <tr>
+                                      <th>Maintain a Balanced Diet:</th>
+                                      <td>Eat a variety of foods from all food groups, including fruits, vegetables, whole grains, lean proteins, and healthy fats. Limit processed foods, sugary snacks, and excessive sodium intake.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Stay Hydrated:</th>
+                                      <td>Drink plenty of water throughout the day to keep your body hydrated. Limit sugary drinks and excessive caffeine intake.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Exercise Regularly:</th>
+                                      <td>Aim for at least 150 minutes of moderate aerobic activity or 75 minutes of vigorous activity each week, along with muscle-strengthening exercises on two or more days per week.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Get Adequate Sleep:</th>
+                                      <td>Aim for 7-9 hours of quality sleep each night. Establish a regular sleep schedule and create a relaxing bedtime routine to improve sleep quality.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Practice Stress Management:</th>
+                                      <td>Incorporate stress-reducing activities into your daily routine, such as meditation, deep breathing exercises, yoga, or spending time in nature.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Maintain a Healthy Weight:</th>
+                                      <td>Aim for a body mass index (BMI) within the healthy range for your height. Achieve weight loss or maintenance through a combination of balanced diet and regular physical activity.</td>
+                                    </tr>
+                                    <tr>
+                                      <th>Prioritize Mental Health:</th>
+                                      <td>Wash your hands frequently with soap and water, especially before eating or preparing food, after using the restroom, and after coughing or sneezing. Follow good respiratory hygiene by covering your mouth and nose with a tissue or your elbow when coughing or sneezing.</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'two')?'block':'none'">
+            <app-patient-login-sections></app-patient-login-sections>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'three')?'block':'none'">
+            <div style="border-top-left-radius:10px;border-top-right-radius:10px;background-color: #000038;text-align: center;padding:8px;color:white;">
+                Available Doctors in Patiental Portal
+            </div>
+            <div class="centerContainer" style="height:450px;margin-bottom: 10px;border-bottom-left-radius:10px;border-bottom-right-radius:10px;padding:1vh 0;">
+                <div class="search-box" style="text-align: left !important;">
+                    <i class='fa fa-search' style="color:#120e7d;font-size: 35px;margin-left:10px;"></i>
+                    <input type="text" (keyup)="keyUp($event)" placeholder="Search Available Doctors!.." style="margin:0px;font-size: 16px;">
+                </div>
+                <div style="border:3px solid red;border-radius:10px;margin:5px 10px;">
+                    <div style="height: 380px;overflow-y: auto;">
+                        <table>
+                            <thead style="background-color: #000038;color:#a4c639;">
+                                <tr>
+                                  <th scope="col">DoctorId</th>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Specialization</th>
+                                  <th scope="col">Biography</th>
+                                  <th scope="col">Gender</th>
+                                  <th scope="col">Profile Pic</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let d of doctorList">
+                                <td>{{d.doctor_id}}</td>
+                                <td>{{d.first_name}} {{d.last_name}}</td>
+                                <td>{{d.specialization}}</td>
+                                <td>{{d.bio}}</td>
+                                <td>{{d.gender}}</td>
+                                <td>
+                                    <div style="width:130px;height:130px;background-image: url('../../assets/images/');">
+                                        <img src="data:image/jpeg;base64,{{d.profilePic}}" alt="" width="130px" height="130px" *ngIf="d.profilePic != null">
+                                        <img src="../../assets/images/patientUser.jpeg" alt="" width="130px" height="130px" *ngIf="d.profilePic == null">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'four')?'block':'none'">
+            <app-patient-profile-section></app-patient-profile-section>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'five')?'block':'none'">
+                <app-pharmacy></app-pharmacy>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'six')?'block':'none'">
+            <div class="invoice-box" style="max-height: 500px;overflow-y: auto;" *ngIf="!checkoutFlag">
+                <table cellpadding="0" cellspacing="0">
+                  <tr class="top">
+                    <td colspan="2">
+                      <table>
+                        <tr>
+                          <td class="title"><h5>Patiental Management</h5></td>
+                          <td>Date: {{ today | date: 'dd/MM/yyyy' }}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+              
+                  <tr class="information">
+                    <td colspan="2">
+                      <table>
+                        <tr>
+                          <td>
+                            Patient Name : {{patientObject.firstName}} {{patientObject.lastName}}<br>
+                            Patient Mobile : {{patientAddressObject.mobile}}<br>
+                            Patient Address : {{patientAddressObject.street}}, {{patientAddressObject.drNo}}, {{patientAddressObject.city}}, {{patientAddressObject.state}}, {{patientAddressObject.zipCode}}.<br>
+                          </td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr class="heading"><td>Cart Items</td><td>Price</td></tr>
+                  <tr class="item" *ngFor="let item of cart | keyvalue">
+                    <td>{{ item.key }} : {{ item.value }}</td>
+                    <td>{{ item.value * getPrice(item.key) }}</td>
+                </tr>
+                    
+                  <tr class="total">
+                    <td></td>
+                    <td><strong style="color:#000038">Total $ : {{getTotalPrice()}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td><button class="button" (click)="clearCart()" style="background-color: red;">Clear Cart</button></td>
+                    <td><button class="button" (click)="proceedToPayment()" style="background-color: green;">Checkout</button></td>
+                  </tr>
+                </table>
+              </div>
+              <div *ngIf="checkoutFlag">
+                <section class="container2">
+                  <div class="theCard">
+                    <figure class="theCardFront">
+                    <div class="instructionsCards">
+                        <div class="variousCards">
+                            <img class="visa cardImg" src="https://th.bing.com/th/id/OIP.iCVUUCqRCwiSZ4NnJAbiVAAAAA?rs=1&pid=ImgDetMain"/>
+                              <img class="discover cardImg" src="https://th.bing.com/th/id/OIP.QqGCRbHLidzyytk1_twyzQHaEv?rs=1&pid=ImgDetMain"/>
+                              <img class="mastercard cardImg" src="https://logos-world.net/wp-content/uploads/2020/09/Mastercard-Symbol.jpg"/>
+                              <img class="amex cardImg" src="https://th.bing.com/th/id/OIP.fU0600Y_yfTXaRPmgFH5-gAAAA?rs=1&pid=ImgDetMain"/>
+                          </div>
+                      </div>
+                      <br class="clear" />
+                      <div class="cardNumber">Card Number:<br/>
+                          <input class="firstfour" placeholder="1111" maxlength="4"/>
+                          <input placeholder="2222" maxlength="4" />
+                          <input placeholder="3333" maxlength="4" />
+                          <input placeholder="4444" maxlength="4" />
+                      </div>
+                      <div class="cardExpiration">Expiration Date:<br/>
+                        <input class="month" placeholder="Mo" maxlength="2"/> / <input class="year" placeholder="Year" maxlength="4"/>
+                      </div>
+                      <div class="cardSecurity">Security Code:<br/>
+                        <input class="csc" placeholder="CSC" maxlength="4"/>
+                         
+                      </div>
+                      <br class="clear">
+                      <button class="pay" (click)="checkout()">Pay Now</button>
+                    </figure>
+                  </div>
+              </section>
+              </div>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'seven')?'block':'none'">
+          <div class="cont">
+            <h2>Placed Order</h2>
+            <div style="max-height: 380px;overflow-y: auto;">
+              <div class="order-details" *ngFor="let o of orders" >
+                <div class="order-item">
+                    <span>Product Name:</span> {{o.products}}
+                </div>
+                <div class="order-item">
+                    <span>Order Status:</span> {{o.order_status}}
+                </div>
+                <div class="order-item">
+                    <span>Price:</span> ${{o.total_amount}}
+                </div>
+                <div class="order-item">
+                    <span>Order Date:</span> {{o.created_at}}
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </main>
+</div>

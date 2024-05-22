@@ -1,0 +1,240 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block" (click)="showAppointment('view')">
+            <a><h6 class="m-b-20">View Appointment</h6></a>
+            <h2 class="text-right"><i class="fas fa-calendar f-left"></i></h2>  
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-green order-card">
+          <div class="card-block" (click)="showAppointment('book')">
+            <a><h6 class="m-b-20">Book Appointment</h6></a>
+            <h2 class="text-right"><i class="fas fa-book-medical f-left"></i></h2>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-yellow order-card">
+          <div class="card-block" (click)="showAppointment('delete')">
+            <a><h6 class="m-b-20">Previous Appointments</h6></a>
+            <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin: 0px 0px 0px 15px;padding: 0px;">
+    <div class="row" style="background-color: white;border-radius: 5px;width:100%;" *ngIf="appointment">
+      <section class="appointments-section">
+        <div class="appointments-header">
+            <h5>UpComing Active Appointments</h5>
+        </div>
+        <div style="max-height: 280px;overflow-y: auto;">
+          <table>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Doctor</th>
+                <th>Status</th>
+            </tr>
+            <tr *ngFor="let i of upcomingAppointments">
+              <td>{{i.appointmentDate}}</td>
+              <td>{{i.startTime}} - {{i.endTime}}</td>
+              <td>{{i.doctor_id}}</td>
+              <td>{{i.status}}</td>
+            </tr>
+          </table>
+        </div>
+    </section>
+    </div>
+    <div class="row" style="background-color: white;border-radius: 5px;width:100%;" *ngIf="viewAppointment">
+      <span class="closeSignup" (click)="closeAppointment()">&times;</span>
+      <section class="appointments-section">
+        <div class="appointments-header" style="padding-top:5px;">
+          <label for="doctors">Select a Doctor to view Appointments : </label>&emsp;
+          <select name="doctors" id="doctors" (change)="selectDoctor($event)">
+            <option value=""></option>
+            <option *ngFor="let i of doctorList" [value]="i.doctor_id" title="{{i.specialization}}" >{{i.first_name}}, {{i.last_name}}</option>
+          </select>
+        </div>
+        <div style="max-height: 280px;overflow-y: auto;">
+          <table>
+            <tr>
+                <th>Date</th>
+                <!-- <th>Time</th> -->
+                <th>Doctor</th>
+                <th>Slot1</th>
+                <th>Slot2</th>
+                <th>Slot3</th>
+                <th>Slot4</th>
+                <th>Slot5</th>
+                <th>Slot6</th>
+                <th>slot7</th>
+                <th>Slot8</th>
+                <th>Slot9</th>
+                <th>Slot10</th>
+                <th>Slot11</th>
+                <th>Slot12</th>
+            </tr>
+            <tr *ngFor="let i of appointmentTimeTable">
+                <td>{{i.date}}</td>
+                <td>{{i.doctor_id}}</td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot1 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot1 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot2 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot2 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot3 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot3 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot4 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot4 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot5 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot5 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot6 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot6 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot7 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot7 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot8 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot8 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot9 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot9 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot10 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot10 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot11 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot11 == null"></i>
+                </td>
+                <td>
+                  <i class="fas fa-check-square booked" *ngIf="i.slot12 != null"></i>
+                  <i class="fas fa-square available" *ngIf="i.slot12 == null"></i>
+                </td>
+            </tr>
+        </table>
+        </div>
+        
+      </section>
+    </div>
+    <div class="row" style="background-color: white;border-radius: 5px;width:100%;" *ngIf="bookAppointment">
+      <span class="closeSignup" (click)="closeAppointment()">&times;</span>
+      <section class="appointments-section">
+        <div class="appointments-header">
+          <h5>Book Appointment</h5>
+          <label for="doctors" style="font-size: 18px;">AvailableDoctor : </label>
+          <select name="doctors" id="doctors" (change)="selectDoctor1($event)">
+            <option value=""></option>
+            <option *ngFor="let i of doctorList" [value]="i.doctor_id" title="{{i.specialization}}" >{{i.first_name}}, {{i.last_name}}</option>
+          </select>
+          <br>
+          <label for="date" style="font-size: 18px;">Available Date's : </label>
+          <select name="date" id="date" (change)="selectDate($event)">
+            <option></option>
+            <option *ngFor="let i of appointmentTimeTable1" [value]="i.date" >{{i.date}}</option>
+          </select>
+          <br>
+          <label for="slot" style="font-size: 18px;">Available Slots : </label>
+          <select name="slot" id="slot" (change)="selectSlot($event)">
+            <option></option>
+            <option *ngFor="let i of timeTable" [value]="i" >{{i}}</option>
+          </select>
+          <br>
+          <button (click)="bookAppointmentSubmit()">Book Appointment</button>
+        </div>
+      </section>
+    </div>
+    <div class="row" style="background-color: white;border-radius: 5px;width:100%;" *ngIf="deleteAppointment">
+      <span class="closeSignup" (click)="closeAppointment()">&times;</span>
+      <section class="appointments-section">
+        <div class="appointments-header">
+            <h5>Previous Appointments</h5>
+        </div>
+        <div style="max-height: 280px;overflow-y: auto;">
+          <table>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Doctor</th>
+                <th>Status</th>
+            </tr>
+            <tr *ngFor="let i of previousAppointments" [class.data-row]="true" (click)="viewPreviousAppointment(i)">
+              <td>{{i.appointmentDate}}</td>
+              <td>{{i.startTime}} - {{i.endTime}}</td>
+              <td>{{i.doctor_id}}</td>
+              <td>{{i.status}}</td>
+            </tr>
+          </table>
+        </div>
+    </section>
+    </div>
+  </div>
+
+  <div id="myModal" class="modalSignup"  [style.display]="appointmentUpgrade">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="closeAppointmentUpgrade()">&times;</span>
+      </div>
+      <div class="modalSignup-body">
+        <div class="patientDiv2">
+          <div class="grid-container">
+              <div class="info-item">
+                  <span class="label">Appointment Id:</span> <span class="value">{{viewSelectedAppointment.appointmentID}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Patient Id:</span> <span class="value">{{viewSelectedAppointment.patientId}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Doctor Id:</span> <span class="value">{{viewSelectedAppointment.doctor_id}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Appointment Date:</span> <span class="value">{{viewSelectedAppointment.appointmentDate}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Start Time:</span> <span class="value">{{viewSelectedAppointment.startTime}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">End Time:</span> <span class="value">{{viewSelectedAppointment.endTime}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Status:</span> <span class="value">{{viewSelectedAppointment.status}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Created On:</span> <span class="value">{{viewSelectedAppointment.createdOn}}</span>
+              </div>
+              <div class="info-item">
+                  <span class="label">Updated On:</span> <span class="value">{{viewSelectedAppointment.updatedOn}}</span>
+              </div>
+          </div>
+          <div class="info-item">
+            Health Status
+            <textarea name="Health Status" id="" cols="80" rows="2" disabled >{{viewSelectedAppointment.healthStatus}}</textarea><br>
+            Tests Need to be checked
+            <textarea name="tests" id="" cols="80" rows="2" disabled>{{viewSelectedAppointment.testsToBeChecked}}</textarea><br>
+            Medication
+            <textarea name="medication" id="" cols="80" rows="2" disabled>{{viewSelectedAppointment.medication}}</textarea>
+        </div>
+      </div>
+    </div>
+</div>

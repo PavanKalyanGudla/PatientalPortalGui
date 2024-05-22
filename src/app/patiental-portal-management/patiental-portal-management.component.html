@@ -1,0 +1,91 @@
+<div class="main">
+    <div class="header">
+        <h1>Welcome to Med Portal</h1>
+    </div>
+    
+    <div class="content">
+        <div class="row">
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                  <a><h6 class="m-b-20">Doctor Record</h6></a>
+                  <br>
+                  <h2 class="text-right"><i class="fas fa-user-nurse f-left"></i></h2>
+
+                </div>
+              </div>
+            </div>
+        
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-green order-card">
+                <div class="card-block" (click)="openDoctorRegistration()">
+                  <a><h6 class="m-b-20" (click)="openDoctorRegistration()">Register Doctor</h6></a>
+                  <br>
+                  <h2 class="text-right"><i class="fas fa-user-plus f-left"></i></h2>
+                </div>
+              </div>
+            </div>
+        
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-yellow order-card">
+                <div class="card-block" (click)="openDoctorLogin()">
+                  <a><h6 class="m-b-20" (click)="openDoctorLogin()">Doctor Login</h6></a>
+                  <br>
+                  <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
+                </div>
+              </div>
+            </div>
+        
+            <div class="col-md-4 col-xl-3">
+              <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                  <a href="/admin-view-doctor-specialisation">
+                    <h6 class="m-b-20">Doctor Specialisation</h6>
+                  </a>
+                  <br>
+                  <h2 class="text-right"><i class="fas fa-user-md f-left"></i></h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024 Med Portal. All rights reserved.</p>
+    </div>
+</div>
+
+<div id="myModal" class="modalSignup"  [style.display]="doctorsignUpFlag">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="cancelDoctorSignUp()">&times;</span>
+        <h4>Doctor Registration</h4>
+      </div>
+      <div class="modalSignup-body">
+        <div class="unAuthorised">
+          <h2 style="color: #f00;">Access Denied</h2>
+          <p style="color: #333;">Created For Future Reference</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal" [style.display]="doctorLoginFlag">
+    <form class="modal-content animate">
+        <div class="modalSignup-header">
+            <span class="closeSignup" (click)="cancelDoctorLogin()">&times;</span>
+            <h4>Doctor Login</h4>
+        </div>
+        <div style="padding: 10px 20px 10px 30px;">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" [(ngModel)]="doctorLogin.doctor_id" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="doctorLogin.password" required>
+            <button type="button" class="loginbtn" (click)="doctorLoginCheck()">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+    </form>
+</div>

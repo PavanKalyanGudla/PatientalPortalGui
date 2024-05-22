@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm bg-c-blue card" id="buttonId" (click)="openProfile('one')">
+            Personal Information
+        </div>
+        <div class="col-sm bg-c-green card" id="buttonId" (click)="openProfile('two')">
+            Address Information
+        </div>
+        <div class="col-sm bg-c-yellow card" id="buttonId" (click)="openProfile('three')">
+            Insurance Information
+        </div>
+        <div class="col-sm bg-c-blue card" id="buttonId" (click)="openProfile('four')">
+            Emergency Contact
+        </div>
+    </div>
+</div>
+<div class="four">
+    <strong style="color: #000038;">Enable / Disable Editing Fields: </strong>
+        <label class="switch">
+            <input type="checkbox" [(ngModel)]="enableEditing" checked>
+            <span class="slider round"></span>
+        </label>
+    <div class="fourHeader">Patient Profile</div>
+    <div class="profile-form" [style.display]="(activeFlag == 'one')?'block':'none'">
+        <strong style="color: green;">Personal Information:</strong><br>
+        <div class="grid-container">
+            <div class="grid-container">
+                <div>
+                    <label for="patientId">Patient Id:</label>
+                    <input type="text" id="patientId" name="patientId" [(ngModel)]="patient.patientId" disabled>
+                </div>
+                <div>
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" [(ngModel)]="patient.firstName" [disabled]="!enableEditing">
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" [(ngModel)]="patient.lastName" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="dob">Date of Birth:</label><br>
+                    <input type="date" id="dob" name="dob" [(ngModel)]="patient.dob" [disabled]="!enableEditing" (input)="onDateChange($event)">
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-container">
+                <div>
+                    <label for="password" >Password:&emsp;<i class="fas fa-eye" [style.color]="showPassColor?'blue':''" (click)="showPassword()" title="Show Password !"></i></label>
+                    <input type="password" id="password" name="password" #showPass [(ngModel)]="patient.address.password" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" [(ngModel)]="patient.gender" [disabled]="!enableEditing">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <label for="maritialStatus">Maritial Status:</label>
+                    <select id="maritialStatus" name="maritialStatus" [(ngModel)]="patient.maritialStatus" [disabled]="!enableEditing">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="age" title="Change DOB to reflect Age.">Age:</label><br>
+                    <input type="number" id="age" name="age" disabled [(ngModel)]="patient.age">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-form" [style.display]="(activeFlag == 'two')?'block':'none'">
+        <strong style="color: green;">Address Information:</strong>
+        <div class="grid-container">
+            <div class="grid-container">
+                <div>
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" [(ngModel)]="patient.address.street" [disabled]="!enableEditing">
+                    <label for="mobile">Mobile:</label>
+                    <input type="text" id="mobile" name="mobile" [(ngModel)]="patient.address.mobile" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="street">Apt No:</label>
+                    <input type="text" id="drNo" name="drNo" [(ngModel)]="patient.address.drNo" [disabled]="!enableEditing">
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="text" id="zipCode" name="zipCode" [(ngModel)]="patient.address.zipCode" [disabled]="!enableEditing">
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" [(ngModel)]="patient.address.city" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" [(ngModel)]="patient.address.state" [disabled]="!enableEditing">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-form" [style.display]="(activeFlag == 'three')?'block':'none'">
+        <strong style="color: green;">Insurance Information:</strong>
+        <div class="grid-container">
+            <div class="grid-container">
+                <div>
+                    <label for="providerName">Provider Name:</label>
+                    <input type="text" id="providerName" name="providerName" [(ngModel)]="patient.insuranceInfo.providerName" [disabled]="!enableEditing">
+                    <label for="effectiveDate">Effective Date:</label>
+                    <input type="date" id="effectiveDate" name="effectiveDate" [(ngModel)]="patient.insuranceInfo.effectiveDate" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="policyNumber">Policy Number:</label>
+                    <input type="text" id="policyNumber" name="policyNumber" [(ngModel)]="patient.insuranceInfo.policyNumber" [disabled]="!enableEditing">
+                    <label for="expirationDate">Expiration Date:</label>
+                    <input type="date" id="expirationDate" name="expirationDate" [(ngModel)]="patient.insuranceInfo.expirationDate" [disabled]="!enableEditing">
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <label for="groupNumber">Group Number:</label>
+                    <input type="text" id="groupNumber" name="groupNumber" [(ngModel)]="patient.insuranceInfo.groupNumber" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="coverageType">Coverage Type:</label>
+                    <input type="text" id="coverageType" name="coverageType" [(ngModel)]="patient.insuranceInfo.coverageType" [disabled]="!enableEditing">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-form" [style.display]="(activeFlag == 'four')?'block':'none'">
+        <strong style="color: green;">Emergency Contact:</strong>
+        <div class="grid-container">
+            <div class="grid-container">
+                <div>
+                    <label for="emergencyContactName">Emergency Contact Name:</label>
+                    <input type="text" id="emergencyContactName" name="emergencyContactName" [(ngModel)]="patient.address.emergencyContactName" [disabled]="!enableEditing">
+                </div>
+                <div>
+                    <label for="relationShip">Relationship With Patient:</label>
+                    <input type="text" id="relationShip" name="relationShip" [disabled]="!enableEditing" [(ngModel)]="patient.address.relationShip">
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <label for="emergencyContactMobile">Emergency Contact Mobile:</label>
+                    <input type="text" id="emergencyContactMobile" name="emergencyContactMobile" [(ngModel)]="patient.address.emergencyContactMobile" [disabled]="!enableEditing">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button (click)="saveUpdated()" >Save Updates</button>
+</div>

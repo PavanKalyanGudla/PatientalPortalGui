@@ -1,0 +1,396 @@
+<main>
+    <div>
+        <nav class="navbar-dark fixed-top">
+            <div class="header">
+                <div class="grid-container">
+                    <div style="width: 100%; display: table;">
+                        <div style="display: table-row;">
+                            <div style="width: 5%; display: table-cell;">
+                                <img class="logo" src="../../assets/images/logo.png">
+                            </div>
+                            <div style="display: table-cell;color:#a4c639;width:8vh;">
+                                Patiental Portal
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%; display: table;">
+                        <div style="display: table-row;">
+                            <div style="float: right;margin-top:15px;margin-right:30px;">
+                                <div class="nav-user-icon">
+                                    <img src="../../assets/images/patientUser.jpeg" alt="" (click)="openPopup()" *ngIf="!profileFlag">
+                                    <img [src]="profilePicSrc" alt="" (click)="openPopup()" *ngIf="profileFlag"> 
+                                    <i class="fa fa fa-caret-square-o-down" (click)="openPopup()" style="font-size:15px;color:#a4c639;cursor: pointer;margin-right: 20px;"></i>
+                                    <a  style="padding-left:5px;color:#a4c639;text-decoration: none;cursor: pointer;" (click)="logout()">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>s
+    </div>
+    
+    <div class="sidenav">
+        <div class="container1">
+            <div class="div1">
+                <div class="hidden-element upload-div" style="margin:75px 0 0 0;text-align:center;">
+                    <i class="fa fa-camera-retro" style="font-size:50px;"></i>
+                    <input type="file" id="fileInput" accept=".jpg, .jpeg, .png">
+                </div>
+            </div>
+            <div class="div2 nav-user-icon1">
+                <img src="../../assets/images/patientUser.jpeg" alt="" *ngIf="!profileFlag">
+                <img [src]="profilePicSrc" alt="" *ngIf="profileFlag">
+            </div>
+        </div>
+        <h3 style="text-align: center;font-size: 20px;">Dr. {{doctorObject.first_name}} {{doctorObject.last_name}}.</h3>
+        <div style="margin: 0px 3px;color:#000038;font-size: medium;text-align: center;">
+            <span style="color: red;">Id : </span>{{doctorObject.doctor_id}}<br>
+            <span style="color: red;">Name : </span>{{doctorObject.first_name}} {{doctorObject.last_name}}<br>
+            <span style="color: red;">Specialization : </span>{{doctorObject.specialization}}<br>
+            <span style="color: red;">PhoneNumber : </span>{{doctorObject.phone_number}}<br>
+            <span style="color: red;">Bio : </span>{{doctorObject.bio}}<br>
+            <span style="color: red;">Gender : </span>{{doctorObject.gender}}<br>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="menuDivContent" [style.display]="(activeFlag == 'one')?'block':'none'" style="width: 170vh;">
+            <div class="our-stroy-text">
+                <h3>Welcome back, Dr. {{doctorObject.first_name}} {{doctorObject.last_name}}</h3>
+                <div class="story-numbers-container">
+                    <div class="story-numbers-box s-n-box1" (click)="openShowPatientsPopUp()">
+                        <strong>{{patientCount}} +</strong>
+                        <span style="color:#000038;">Total Patient's Served</span>
+                    </div>
+                    <div class="story-numbers-box s-n-box2" (click)="openShowDoctorsPopUp()">
+                        <strong>{{doctorsCount}} +</strong>
+                        <span style="color:#000038;">Specialized Expert Doctor's</span>
+                    </div>
+                    <div class="story-numbers-box s-n-box3" (click)="openEmergencyPopUp()">
+                        <strong><i class="fa fa-wheelchair"></i></strong>
+                        <span style="color:#000038;">Patients Emergency Contact Info</span>
+                    </div>
+                    <div class="story-numbers-box s-n-box4" (click)="openMenuTab('appointments')">
+                        <strong><i class="fa fa-bell"></i>{{dailyAppointmentCount}}</strong>
+                        <span style="color:#000038;">Today's Appointments</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lab-tests container">
+                <h1></h1>
+                <h3></h3>
+                <div></div>
+                <div>
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/e9fec637561-Vitamins.jpg?dim=256x0" alt="">
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/f055b8d7606-Fever_Infection.jpg?dim=256x0" alt="">
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/0108134f09b-Health_Checkups.jpg?dim=256x0" alt="">
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/686b12c5c64-Heart.jpg?dim=256x0" alt="">
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/6c5765fb3e7-Diabetes.jpg?dim=256x0" alt="">
+                    <img src="https://cms-contents.pharmeasy.in/homepage_top_categories_images/453e093976a-thyroid.png?dim=256x0" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'two')?'block':'none'" style="width: 170vh;">
+            dd1
+        </div>
+        <div class="menuDivContent popupDiv" [style.display]="(activeFlag == 'editProfile')?'block':'none'" style="width: 170vh;">
+            <p style="text-align: center;">Enabling Editing Profile Changes</p>
+            <div class="modalSignup-header">
+                <span class="closeSignup" (click)="openMenuTab('one')">&times;</span>
+            </div>
+            <div class="grid-container" style="padding: 0px 15px;">
+                <div class="grid-container">
+                    <div>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" [(ngModel)]="doctorObjectEdit.first_name">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" placeholder="Address" [(ngModel)]="doctorObjectEdit.address">
+                        <label for="postal_code">Postal Code:</label>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code" [(ngModel)]="doctorObjectEdit.postal_code">
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" [(ngModel)]="doctorObjectEdit.last_name">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" placeholder="City" [(ngModel)]="doctorObjectEdit.city">
+                        <label for="bio">Bio:</label>
+                        <input type="text" id="bio" name="bio" placeholder="Bio" [(ngModel)]="doctorObjectEdit.bio">
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div>
+                        <label for="specialization">specialization:</label>
+                        <input type="text" id="specialization" name="specialization" placeholder="Specialization" [(ngModel)]="doctorObjectEdit.specialization">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" placeholder="State" [(ngModel)]="doctorObjectEdit.state">
+                        <label for="date_of_birth">Dob:</label>
+                        <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Date Of Birth" [(ngModel)]="doctorObjectEdit.date_of_birth">
+                    </div>
+                    <div>
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" [(ngModel)]="doctorObjectEdit.phone_number">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="Country" [(ngModel)]="doctorObjectEdit.country">
+                        <label for="gender">Gender:</label>
+                        <input type="text" id="gender" name="gender" placeholder="Gender" [(ngModel)]="doctorObjectEdit.gender">
+                    </div>
+                </div>
+            </div>
+            <button class="loginbtn" (click)="saveDoctor()" style="margin-left: 15px;margin-bottom: 15px;">Save Changes</button>
+            <br>
+        </div>
+        <div class="menuDivContent popupDiv" [style.display]="(activeFlag == 'settings')?'block':'none'" style="width: 170vh;">
+            <p style="text-align: center;">Doctor Profile Settings</p>
+            <div class="modalSignup-header">
+                <span class="closeSignup" (click)="openMenuTab('one')">&times;</span>
+            </div>
+            <div style="margin: 1% 3%;">
+                <button class="accordion" (click)="toggleAccordion(0)">View Email password</button>
+                <div class="panel" [ngStyle]="{'display': accordions[0].isActive ? 'block' : 'none'}">
+                Email : {{doctorObjectEdit.email}}
+                <br>
+                Password : {{doctorObjectEdit.password}}
+                </div>
+                <button class="accordion" (click)="toggleAccordion(1)">Change Password</button>
+                <div class="panel" [ngStyle]="{'display': accordions[1].isActive ? 'block' : 'none'}">
+                    <div class="grid-container">
+                        <div>
+                            <label for="password" >Old Password:&emsp;<i class="fas fa-eye" [style.color]="showOldPassColor?'blue':''" (click)="showOldPassword()" title="Show Old Password !"></i></label>
+                            <input type="password" id="password" name="password" #showPass [(ngModel)]="doctorObjectPassword.password">
+                        </div>
+                        <div>
+                            <label for="password1" >New Password:&emsp;<i class="fas fa-eye" [style.color]="showNewPassColor?'blue':''" (click)="showNewPassword()" title="Show New Password !"></i></label>
+                            <input type="password" id="password1" name="password1" #showPass1 [(ngModel)]="doctorObjectPassword.newpassword">
+                        </div>
+                    </div>
+                    <button (click)="changePassword()">Change Password</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'help')?'block':'none'" style="width: 170vh;">
+            help
+        </div>
+        <div class="menuDivContent" [style.display]="(activeFlag == 'appointments')?'block':'none'" style="width: 170vh;">
+            <div class="grid-container">
+                <div class="back-button" (click)="openMenuTab('one')">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div style="margin:auto 0px;text-align: right;">
+                    <i class="fas fa-calendar-check" style="color:#000038;font-size: 25px;"></i><span style="background-color: #a4c639;">{{todaysDate|date:'yyyy-MM-dd'}}&emsp;</span>
+                    <i class="fas fa-clock" style="color:#000038;font-size: 25px;"></i><span style="background-color: #a4c639;">{{todaysDate|date:'HH:mm:ss'}}</span>
+                </div>
+            </div>
+            <div class="story-numbers-container">
+                <div class="story-numbers-box s-n-box4" (click)="openAppointment('active')">
+                    <strong><i class="fa fa-check-circle"></i></strong>
+                    <span style="color:#000038;">Active Appointments</span>
+                </div>
+                <div class="story-numbers-box s-n-box3" (click)="openAppointment('cancel')">
+                    <strong><i class="fa fa-times-circle"></i></strong>
+                    <span style="color:#000038;">Cancelled Appointments</span>
+                </div>
+            </div>
+            <div [style.display]="(appointmentFlag == 'active')?'block':'none'" style="background-color: #9e98f1;height: 300px;margin-top: 1%;border-radius: 10px;">
+                <div class="grid-container1">
+                    <div class="grid-item" *ngFor="let i of timeSlots">
+                        <div id="appointmentId" style="background-color: #d7d4ff;color:#000038;padding:10px;border-radius: 5px;" (click)="patientAppointment(i['key'])" *ngIf="checkAppointment(i['key'])">
+                            {{ i['key'] }}: {{ i['value'] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [style.display]="(appointmentFlag == 'cancel')?'block':'none'" style="background-color: #9e98f1;height: 300px;margin-top: 1%;border-radius: 10px;">
+                <div>
+                    cancel
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal" [style.display]="doctorLoginFlag">
+    <div class="modal-content animate">
+        <div  class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+                <span class="closeSignup" (click)="cancelDoctorLogin()">&times;</span>
+                <div class="user-info">
+                    <div class="nav-user-icon1">
+                        <img src="../../assets/images/patientUser.jpeg" alt="" *ngIf="!profileFlag">
+                        <img [src]="profilePicSrc" alt="" *ngIf="profileFlag">
+                    </div>
+                    <h5>{{doctorObject.first_name}} {{doctorObject.last_name}}</h5>
+                </div>
+                <hr>
+                <a class="sub-menu-link" (click)="openMenuTabPopup('editProfile')">
+                    <img src="../../assets/images/profile.png" alt="">
+                    <p>Edit Profile</p>
+                </a>
+                <a class="sub-menu-link" (click)="openMenuTabPopup('settings')">
+                    <img src="../../assets/images/setting.png" alt="">
+                    <p>Settings & Privacy</p>
+                </a>
+                <a class="sub-menu-link" > <!--(click)="openMenuTabPopup('help')"-->
+                    <img src="../../assets/images/help.png" alt="">
+                    <p>Help & Support</p>
+                </a>
+                <a class="sub-menu-link" (click)="logout()">
+                    <img src="../../assets/images/logout.png" alt="">
+                    <p>LogOut</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modalSignup"  [style.display]="showPatientsPopUpFlag">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="closeShowPatientsPopUp()">&times;</span>
+      </div>
+      <div class="modalSignup-body" *ngFor="let i of patientList">
+        <div class="patientDiv">
+            <div class="grid-container">
+                <div class="grid-container">
+                    <div style="text-align: center;">
+                        <img src="data:image/jpeg;base64,{{i.profilePic}}" alt="Not Available">
+                    </div>
+                    <div>
+                        <b style="background-color: #a4c639;">Patient information</b><br>
+                        <span style="color:red;">PatientId: </span><span style="color:green;">{{i.patientId}}</span><br>
+                        <span style="color:red;">Name: </span><span style="color:green;">{{i.firstName}} {{i.lastName}}</span><br>
+                        <span style="color:red;">DateOdBirth: </span><span style="color:green;">{{i.dob}}</span><br>
+                        <span style="color:red;">Age: </span><span style="color:green;">{{i.age}}</span><br>
+                        <span style="color:red;">Maritial: </span><span style="color:green;">{{i.maritialStatus}}</span><br>
+                        <span style="color:red;">Gender: </span><span style="color:green;">{{i.gender}}</span><br>
+                        <span style="color:red;">Mobile: </span><span style="color:green;">{{i.address.mobile}}</span><br>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div>
+                        <b style="background-color: #a4c639;">Address information</b><br>
+                        <span style="color:red;">street: </span><span style="color:green;">{{i.address.street}}</span><br>
+                        <span style="color:red;">city: </span><span style="color:green;">{{i.address.city}}</span><br>
+                        <span style="color:red;">state: </span><span style="color:green;">{{i.address.state}}</span><br>
+                        <span style="color:red;">zipCode: </span><span style="color:green;">{{i.address.zipCode}}</span><br>
+                        <span style="color:red;">Drno: </span><span style="color:green;">{{i.address.drNo}}</span><br>
+                        <span style="color:red;">Email: </span><span style="color:green;">{{i.address.email}}</span>
+                    </div>
+                    <div>
+                        <b style="background-color: #a4c639;">Insurance information</b><br>
+                        <span style="color:red;">Provider Name: </span><span style="color:green;">{{i.insuranceInfo.providerName}}</span><br>
+                        <span style="color:red;">Policy number: </span><span style="color:green;">{{i.insuranceInfo.policyNumber}}</span><br>
+                        <span style="color:red;">Group number: </span><span style="color:green;">{{i.insuranceInfo.groupNumber}}</span><br>
+                        <span style="color:red;">CoverageType: </span><span style="color:green;">{{i.insuranceInfo.coverageType}}</span><br>
+                        <span style="color:red;">EffectiveDate: </span><span style="color:green;">{{i.insuranceInfo.effectiveDate}}</span><br>
+                        <span style="color:red;">ExpirationDate: </span><span style="color:green;">{{i.insuranceInfo.expirationDate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div id="myModal" class="modalSignup"  [style.display]="showdoctorsPopUpFlag">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="closeShowDoctorsPopUp()">&times;</span>
+      </div>
+      <div class="modalSignup-body">
+        <div class="doctor-profile" *ngFor="let i of doctorList">
+            <div class="doctor-photo">
+              <img src="../../assets/images/patientUser.jpeg" alt="Doctor Name" *ngIf="i.profilePic == null">
+              <img src="data:image/jpeg;base64,{{i.profilePic}}" alt="Doctor Name" *ngIf="i.profilePic != null">
+            </div>
+            <div class="doctor-info">
+              <h4 style="color:red;">Dr. {{i.first_name}} {{i.last_name}}</h4>
+              <div class="grid-container">
+                <div>
+                    doctor Id: <span style="color:green;">{{i.doctor_id}}</span><br>
+                    doctor Email: <span style="color:green;">{{i.email}}</span>
+                    Gender: <span style="color:green;">{{i.gender}}</span>
+                </div>
+                <div>
+                    Specialization: <span style="color:green;">{{i.specialization}}</span><br>
+                    Bio: <span style="color:green;">{{i.bio}}</span>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="myModal" class="modalSignup"  [style.display]="patientEmergencyContact">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="closeEmergencyPopup()">&times;</span>
+      </div>
+      <div class="modalSignup-body">
+        <div class="patientDiv2">
+            <table>
+                <tr><th>PatientId</th><th>FirstName</th><th>LastName</th><th>Emergency Contact Name</th><th>Relation with Patient</th><th>Emergency Contact Number</th></tr>
+                <tr  *ngFor="let i of patientList">
+                    <td>{{i.patientId}}</td>
+                    <td>{{i.firstName}}</td>
+                    <td>{{i.lastName}}</td>
+                    <td>{{i.address.emergencyContactName}}</td>
+                    <td>{{i.address.relationShip}}</td>
+                    <td>{{i.address.emergencyContactMobile}}</td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="myModal" class="modalSignup"  [style.display]="appointmentUpgrade">
+    <div class="modalSignup-content">
+      <div class="modalSignup-header">
+        <span class="closeSignup" (click)="closeAppointmentUpgrade()">&times;</span>
+      </div>
+      <div class="modalSignup-body">
+        <div class="patientDiv2">
+            <p style="text-align: center;color:#a4c639">{{slotNumber}}</p>
+            <div class="grid-container">
+                <div style="margin:0px auto;">
+                    <span style="color: red;">Appointment Id : </span>{{selectedPatientMeeting.patientId}}
+                    <br>
+                    <span style="color: red;">Patient Id : </span>{{selectedPatientMeeting.patientId}}
+                    <br>
+                    <span style="color: red;">Patient FirstName : </span>{{selectedPatientMeeting.firstName}}
+                    <br>
+                    <span style="color: red;">Patient LastName : </span>{{selectedPatientMeeting.lastName}}
+                    <br>
+                    <span style="color: red;">Patient DateOfBirth : </span>{{selectedPatientMeeting.dob}}
+                    <br>
+                    <span style="color: red;">Patient Age : </span>{{selectedPatientMeeting.age}}
+                    <br>
+                    <span style="color: red;">Patient Marital Status : </span>{{selectedPatientMeeting.maritialStatus}}
+                    <br>
+                    <span style="color: red;">Patient Gender : </span>{{selectedPatientMeeting.gender}}
+                    <br>
+                    <span style="color: red;">Appointment Id : </span>{{selectedAppointment.appointmentID}}
+                    <br>
+                    <span style="color: red;">Appointment Status : </span>{{selectedAppointment.status}}
+                </div>
+                <div>
+                    Health Status
+                    <textarea name="Health Status" id="" cols="80" rows="2" [(ngModel)]="selectedAppointment.healthStatus"></textarea><br>
+                    Tests Need to be checked
+                    <textarea name="tests" id="" cols="80" rows="2" [(ngModel)]="selectedAppointment.testsToBeChecked"></textarea><br>
+                    Medication
+                    <textarea name="medication" id="" cols="80" rows="2" [(ngModel)]="selectedAppointment.medication"></textarea>
+                </div>
+            </div>
+            <div style="display: flex;justify-content: center;align-items: center;">
+                <button class="button" (click)="FinishAppointment()">Save & Close Appointment</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

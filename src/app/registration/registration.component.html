@@ -1,0 +1,140 @@
+<div class="registration-form">
+    <div class="step-container active" id="step1">
+        <fieldset>
+            <legend>Patiental Information:</legend>
+            <div class="grid-container">
+                <div style="width: 100%;">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName">
+                    <div class="grid-container">
+                        <div>
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" [(ngModel)]="dob" (input)="onDateChange($event)">
+                        </div>
+                        <div>
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" [(ngModel)]="age" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName">
+                    <div class="grid-container">
+                        <div>
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender" [(ngModel)]="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="maritialStatus">Maritial Status:</label>
+                            <select id="maritialStatus" name="maritialStatus" [(ngModel)]="maritialStatus">
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="button" (click)="personalValidation('step1', 'step2')">Next &raquo;</button>
+    </div>
+    <div class="step-container" id="step2">
+        <fieldset>
+            <legend>Address Information:</legend>
+            <div class="grid-container">
+                <div class="grid-container">
+                    <div>
+                        <label for="street">Street:</label>
+                        <input type="text" id="street" name="street" [(ngModel)]="street">
+                        <label for="mobile">Mobile:</label>
+                        <input type="text" id="mobile" name="mobile" [(ngModel)]="mobile">
+                        <label for="emergencyContactMobile">Emergency Contact Mobile:</label>
+                        <input type="text" id="emergencyContactMobile" name="emergencyContactMobile" [(ngModel)]="emergencyContactMobile">
+                    </div>
+                    <div>
+                        <label for="street">Apt No:</label>
+                        <input type="text" id="drNo" name="drNo" [(ngModel)]="drNo">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" id="zipCode" name="zipCode" [(ngModel)]="zipCode">
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" [(ngModel)]="city">
+                        <label for="emergencyContactName">Emergency Contact Name:</label>
+                        <input type="text" id="emergencyContactName" name="emergencyContactName" [(ngModel)]="emergencyContactName">
+                    </div>
+                    <div>
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" [(ngModel)]="state">
+                        <label for="relationShip">Relationship:</label>
+                        <input type="text" id="relationShip" name="relationShip" [(ngModel)]="relationShip">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="button" (click)="prevStep('step2', 'step1')">&laquo; Previous</button>
+        <button type="button" (click)="personalValidation('step2', 'step3')">Next &raquo;</button>
+    </div>
+    <div class="step-container" id="step3">
+        <fieldset>
+            <legend>Health Insurance Information:</legend>
+            <div class="grid-container">
+                <div class="grid-container">
+                    <div>
+                        <label for="providerName">Provider Name:</label>
+                        <input type="text" id="providerName" name="providerName" [(ngModel)]="providerName">
+                        <label for="effectiveDate">Effective Date:</label>
+                        <input type="date" id="effectiveDate" name="effectiveDate" [(ngModel)]="effectiveDate">
+                    </div>
+                    <div>
+                        <label for="policyNumber">Policy Number:</label>
+                        <input type="text" id="policyNumber" name="policyNumber" [(ngModel)]="policyNumber">
+                        <label for="expirationDate">Expiration Date:</label>
+                        <input type="date" id="expirationDate" name="expirationDate" [(ngModel)]="expirationDate">
+                      
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div>
+                        <label for="groupNumber">Group Number:</label>
+                        <input type="text" id="groupNumber" name="groupNumber" [(ngModel)]="groupNumber">
+                    </div>
+                    <div>
+                        <label for="coverageType">Coverage Type:</label>
+                        <input type="text" id="coverageType" name="coverageType" [(ngModel)]="coverageType">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="button" (click)="prevStep('step3', 'step2')">&laquo; Previous</button>
+        <button type="button" (click)="personalValidation('step3', 'step4')">Next &raquo;</button>
+    </div>
+    <div class="step-container" id="step4">
+        <fieldset>
+            <legend>Email - Password</legend>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email">
+            <div class="grid-container">
+                <div>
+                    <label for="password" >Password:&emsp;<i class="fas fa-eye" [style.color]="showPassColor?'blue':''" (click)="showPassword()" title="Show Password !"></i></label>
+                    <input type="password" id="password" name="password" [(ngModel)]="password" #showPass >
+                    <p *ngIf="!verifyPassword()" style="color:red;">Password must be 9-15 characters and include at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.</p>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirm Password:&emsp;<i class="fas fa-eye" [style.color]="showConfPassColor?'blue':''" (click)="showConfirmPassword()" title="Show Confirm Password !"></i></label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" #showConfPass>
+                    <p *ngIf="!verifyConfirmPassword()" style="color:red;">Password must be 9-15 characters and include at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.</p>
+                </div>
+            </div>
+        </fieldset>
+        <button type="button" (click)="prevStep('step4', 'step3')">&laquo; Previous</button>
+        <button type="button" (click)="personalValidation('step4', 'step5')" style="background-color: #007bff;">Submit</button>
+    </div>
+</div>
